@@ -14,14 +14,19 @@ P = TermGenerator()
 S = SPARQLProg(endpoint='wd')
 C = Var('C')
 N = Var('N')
+
+# logic programming query: continent(C), enlabel(C,N)
 query = (P.continent(C), P.enlabel(C, N))
 for r in S.query(query):
     print(f"{r['C']} {r['N']}")
 ```
 
-## Example Notebook
+## Example Notebooks
 
-See [Notebook_01_Basics.ipynb](Notebook_01_Basics.ipynb)
+See:
+
+ * [Notebook_01_Basics](Notebook_01_Basics.ipynb)
+ * [Notebook_02_Programs](Notebook_02_Programs.ipynb)
 
 ## Installation
 
