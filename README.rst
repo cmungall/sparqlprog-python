@@ -58,8 +58,7 @@ Query wikidata for continents and their names:
 
 ::
    
-    ./sparqlprog.py -u http://localhost:9083 -e wd “continent(X),
-enlabel(X,N)”
+    ./sparqlprog.py -u http://localhost:9083 -e wd “continent(X),enlabel(X,N)”
 
 You can also use the default service on heroku, but it is not guaranteed
 to be running:
@@ -67,3 +66,10 @@ to be running:
 ::
    
     ./sparqlprog.py -e wd “continent(X), enlabel(X,N)”
+
+.. |PyPI| image:: https://img.shields.io/pypi/v/sparqlprog.svg
+   :target: https://pypi.python.org/pypi/sparqlprog
+
+.. |Build Status| image:: https://travis-ci.org/cmungall/sparqlprog-python.svg?branch=master
+  :target: https://travis-ci.org/cmungall/sparqlprog-python
+            

@@ -12,6 +12,7 @@ pt_classifiers = [
     "Topic :: Utilities",
 ]
 
+# NOTE: make release seems to be failing unless README is commented out...
 setup(
     name = "sparqlprog",
     py_modules=["sparqlprog"],
