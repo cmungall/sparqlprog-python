@@ -10,6 +10,9 @@ from rdflib import Literal
 import click
 import logging
 
+__author__ = "Chris Mungall <cjmungall@lbl.gov>"
+__version__ = "0.0.1"
+
 DEFAULT_SERVER = 'https://evening-falls-87315.herokuapp.com'
 
 class SPARQLProg():
