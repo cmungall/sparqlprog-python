@@ -29,8 +29,8 @@ Example Notebooks
 
 See:
 
--  `Notebook_01_Basics <Notebook_01_Basics.ipynb>`__
--  `Notebook_02_Programs <Notebook_02_Programs.ipynb>`__
+-  `Notebook_01_Basics <https://nbviewer.jupyter.org/github/cmungall/sparqlprog-python/blob/master/Notebook_01_Basics.ipynb>`__
+-  `Notebook_02_Programs <https://nbviewer.jupyter.org/github/cmungall/sparqlprog-python/blob/master/Notebook_02_Programs.ipynb>`__
 
 Installation
 ------------
