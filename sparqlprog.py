@@ -5,7 +5,7 @@ Module and command line utility for SPARQLProg
 
 from pengines.Builder import PengineBuilder
 from pengines.Pengine import Pengine
-from prologterms import TermGenerator, PrologRenderer, Program, Var
+from prologterms import TermGenerator, PrologRenderer, Program, Var, Term
 from rdflib import Literal
 import click
 import logging
@@ -32,7 +32,7 @@ class SPARQLProg():
         self.program = program
             
 
-    def query(self, q, endpoint=None):
+    def query(self, q, select=None, endpoint=None):
         """
         Query a sparqlprog endpoint
 
@@ -42,14 +42,19 @@ class SPARQLProg():
         P = TermGenerator()
         opts = []
         if self.rules is not None:
-            opts = [P.rule(r) for r in self.rules]
+            # force a tuple
+            opts = [P.rule( (r,) ) for r in self.rules]
         opts_str = self.renderer.render(opts)
+        if select is None:
+            select = q
+        if select is not str:
+            select = self.renderer.render(select)
         if type(q) is not str:
             q = self.renderer.render(q)
         if endpoint is None:
             endpoint = self.endpoint
         if endpoint is not None:
-            q = f"'??'({endpoint}, ({q}), ({q}), {opts_str})"
+            q = f"'??'({endpoint}, ({q}), ({select}), {opts_str})"
         logging.info(f"Query={q}")
         logging.info(f"Program={self.program}")
         builder = PengineBuilder(urlserver=self.server,
@@ -61,9 +66,10 @@ class SPARQLProg():
 
         # note: may be rewritten after this is fixed and pushed to pypi:
         # https://github.com/ian-andrich/PythonPengines/issues/14
-        for r in pengine.currentQuery.availProofs:
-            yield self._translate(r)
-        pengine.currentQuery.availProofs = [] # reset
+        if pengine.currentQuery is not None:
+            for r in pengine.currentQuery.availProofs:
+                yield self._translate(r)
+            pengine.currentQuery.availProofs = [] # reset
         n=0
         while pengine.currentQuery is not None and pengine.currentQuery.hasMore:
             n += 1
