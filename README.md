@@ -2,7 +2,9 @@
 
 wraps [sparqlprog](https://github.com/cmungall/sparqlprog)
 
+## Example Notebook
 
+See [Notebook_01_Basics.ipynb](Notebook_01_Basics.ipynb)
 
 ## Installation
 
