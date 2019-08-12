@@ -75,4 +75,3 @@ to be running:
 .. |PyPI| image:: https://img.shields.io/pypi/v/sparqlprog.svg
    :target: https://pypi.python.org/pypi/sparqlprog
 
-            
