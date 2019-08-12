@@ -1,6 +1,8 @@
 sparqlprog for python
 =====================
 
+|Build Status| |PyPI|
+
 This module wraps
 `sparqlprog <https://github.com/cmungall/sparqlprog>`__, providing a
 Python API for executing logic program queries over SPARQL endpoints.
@@ -67,9 +69,10 @@ to be running:
    
     ./sparqlprog.py -e wd “continent(X), enlabel(X,N)”
 
+.. |Build Status| image:: https://travis-ci.org/cmungall/sparqlprog-python.svg?branch=master
+  :target: https://travis-ci.org/cmungall/sparqlprog-python
+
 .. |PyPI| image:: https://img.shields.io/pypi/v/sparqlprog.svg
    :target: https://pypi.python.org/pypi/sparqlprog
 
-.. |Build Status| image:: https://travis-ci.org/cmungall/sparqlprog-python.svg?branch=master
-  :target: https://travis-ci.org/cmungall/sparqlprog-python
             
