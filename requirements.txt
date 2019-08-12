@@ -2,3 +2,5 @@ prologterms>=0.0
 pengines>=0.1.5
 click>=0.0
 rdflib>=0.0
+pandas>=0.0
+dotmap

@@ -7,6 +7,8 @@ from pengines.Builder import PengineBuilder
 from pengines.Pengine import Pengine
 from prologterms import TermGenerator, PrologRenderer, Program, Var, Term
 from rdflib import Literal
+from dotmap import DotMap
+import pandas as pd
 import click
 import logging
 
@@ -14,6 +16,13 @@ __author__ = "Chris Mungall <cjmungall@lbl.gov>"
 __version__ = "0.0.3"
 
 DEFAULT_SERVER = 'https://evening-falls-87315.herokuapp.com'
+
+# https://stackoverflow.com/questions/2352181/how-to-use-a-dot-to-access-members-of-dictionary
+class dotdict(dict):
+    """dot.notation access to dictionary attributes"""
+    __getattr__ = dict.get
+    __setattr__ = dict.__setitem__
+    __delattr__ = dict.__delitem__
 
 class SPARQLProg():
     """
@@ -35,6 +44,17 @@ class SPARQLProg():
         self.program = program
             
 
+    def query_to_dataframe(self, q, select=None, **args):
+        """
+        As query(), but returns a pandas dataframe
+        """
+        items = []
+        for r in self.query(q, select=select, **args):
+            items.append(r.toDict())
+        df = pd.DataFrame(items)
+        return df
+         
+            
     def query(self, q, select=None, endpoint=None):
         """
         Query a sparqlprog endpoint
@@ -93,7 +113,9 @@ class SPARQLProg():
                 for k,v in term.items():
                     v = self._translate(v)
                     term[k] = v
-        return term
+                return DotMap(term)
+        else:
+            return term
 
     def _translate_literal(self, v):
         if type(v) == dict:

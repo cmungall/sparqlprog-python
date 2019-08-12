@@ -58,7 +58,10 @@ class TestSPARQLProg(unittest.TestCase):
         query = (P.ever_in_band(Z,metallica), P.has_shared_band_member(X,Y,Z))
         res = S.query(query, [X,Y,Z])
         for r in res:
-            print(f"RESULT={r}")
+            print(f"X={r.X} Y={r.Y} y+{r.Z}")
+        df =  S.query_to_dataframe(query, [X,Y,Z])
+        print(df)
+            
 
 if __name__ == '__main__':
     unittest.main()

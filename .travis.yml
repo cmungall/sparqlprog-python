@@ -6,9 +6,11 @@ services:
 
 before_install:
   - docker pull cmungall/sparqlprog
-
-before_script:
   - docker run -p 9083:9083 cmungall/sparqlprog
+  - docker ps -a
+
+#before_script:
+#  - docker run -p 9083:9083 cmungall/sparqlprog
 
 script:
   - python -m unittest tests/test_*.py 
