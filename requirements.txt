@@ -1,0 +1,4 @@
+prologterms>=0.0
+pengines>=0.0
+click>=0.0
+rdflib>=0.0
