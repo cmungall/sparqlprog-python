@@ -1,7 +1,7 @@
 #from distutils.core import setup
 from setuptools import setup
 
-import prologterms
+import sparqlprog
 
 pt_classifiers = [
     "Development Status :: 4 - Beta",
@@ -15,8 +15,8 @@ pt_classifiers = [
 setup(
     name = "sparqlprog",
     py_modules=["sparqlprog"],
-    version = prologterms.__version__,
-    description = "A simple python library for generating prolog terms",
+    version = sparqlprog.__version__,
+    description = "Execute logic program queries against a remote SPARQL endpoint",
     long_description=open("README.rst").read(),
     author = "Chris Mungall",
     author_email = "cmungall+github@gmail.com",
