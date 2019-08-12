@@ -11,7 +11,7 @@ import click
 import logging
 
 __author__ = "Chris Mungall <cjmungall@lbl.gov>"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 DEFAULT_SERVER = 'https://evening-falls-87315.herokuapp.com'
 
